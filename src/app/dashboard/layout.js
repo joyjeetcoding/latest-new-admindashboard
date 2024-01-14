@@ -9,8 +9,8 @@ import { IoMdClose } from "react-icons/io";
 function layout({ children }) {
   const { sidebar, setSidebar } = useContext(GlobalContext);
   const handleNav = () => {
-    setSidebar(!sidebar)
-  }
+    setSidebar(!sidebar);
+  };
   return (
     <div className="w-full h-full">
       <div className="flex">
@@ -32,15 +32,18 @@ function layout({ children }) {
             <Sidebar />
           </div>
         ) : null}
-        <div>
-          {
-            sidebar ? <GiHamburgerMenu size={40}
-            onClick={handleNav} className="cursor-pointer lg:hidden" /> : null
-          }
+        <div className="flex flex-col">
+          {sidebar ? (
+            <GiHamburgerMenu
+              size={40}
+              onClick={handleNav}
+              className="cursor-pointer lg:hidden"
+            />
+          ) : null}
           <Navbar />
+          <div>{children}</div>
         </div>
       </div>
-      <div>{children}</div>
     </div>
   );
 }
