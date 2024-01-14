@@ -1,14 +1,20 @@
-import Navbar from "@/components/Navbar"
-import Sidebar from "@/components/Sidebar"
+import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
 
-function layout({children}) {
+function layout({ children }) {
   return (
-    <>
-        <Sidebar />
-        <Navbar />
-        {children}
-    </>
-  )
+    <div className="w-full h-full">
+      <div className="flex">
+        <div>
+          <Sidebar />
+        </div>
+        <div>
+          <Navbar />
+        </div>
+      </div>
+      <div>{children}</div>
+    </div>
+  );
 }
 
-export default layout
+export default layout;
