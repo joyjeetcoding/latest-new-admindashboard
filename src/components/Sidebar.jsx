@@ -40,6 +40,7 @@ function Sidebar() {
   
 
   const hanldeNavigate = (menuItem) => {
+    handleNav();
     router.push(menuItem.path);
   };
 
