@@ -12,37 +12,17 @@ function layout({ children }) {
     setSidebar(!sidebar);
   };
   return (
-    <div className="w-full h-full">
-      <div className="flex">
-        {!sidebar ? (
-          <div className="w-1/2 md:w-[40%] lg:w-[20%] h-screen bg-green-500 text-white">
-            {sidebar ? (
-              <GiHamburgerMenu
-                onClick={handleNav}
-                className="cursor-pointer lg:hidden"
-                size={40}
-              />
-            ) : (
-              <IoMdClose
-                size={40}
-                onClick={handleNav}
-                className="cursor-pointer lg:hidden"
-              />
-            )}
-            <Sidebar />
+    <div className="flex h-screen">
+      <div className="flex-1">
+        <Sidebar />
+      </div>
+      <div className="flex-[4] flex-col">
+        <Navbar />
+        <main>
+          <div>
+            {children}
           </div>
-        ) : null}
-        <div className="flex flex-col">
-          {sidebar ? (
-            <GiHamburgerMenu
-              size={40}
-              onClick={handleNav}
-              className="cursor-pointer lg:hidden"
-            />
-          ) : null}
-          <Navbar />
-          <div>{children}</div>
-        </div>
+        </main>
       </div>
     </div>
   );

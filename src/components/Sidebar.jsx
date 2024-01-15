@@ -10,6 +10,7 @@ import { IoMdClose } from "react-icons/io";
 import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { GlobalContext } from "@/context";
+import Link from "next/link";
 
 const menuItems = [
   {
@@ -34,24 +35,27 @@ const menuItems = [
 
 function Sidebar() {
   const router = useRouter();
-  const { sidebar, setSidebar } = useContext(GlobalContext);
+  const { sidebar, setSidebar, handleNav } = useContext(GlobalContext);
 
-  const handleNav = () => {
-    setSidebar(!sidebar)
-  }
+  
 
   const hanldeNavigate = (menuItem) => {
     router.push(menuItem.path);
   };
 
   return (
-    <div className="font-fontInput relative ">
-      
-      <h1 className="font-heading font-extrabold text-center text-xl md:text-2xl lg:text-3xl p-5">
-        ADMINOX
-      </h1>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 flex justify-center items-center flex-col">
-        <div className="p-2">
+    <div className={`absolute left-0 top-0 flex flex-col h-screen w-[50%] md:w-[35%] lg:w-[20%] bg-green-500 duration-500 ease-in-out ${!sidebar ? "-translate-x-full lg:translate-x-0" : "translate-x-0"}`}>
+      {
+        !sidebar ? null :
+        <IoMdClose onClick={handleNav} size={40} className="text-white cursor-pointer lg:hidden" />
+      }
+      <div className="flex justify-center items-center">
+        <Link href={"/dashboard"} className="font-heading font-extrabold text-center text-xl md:text-2xl lg:text-3xl p-5 py-7 mt-8">
+          ADMINOX
+        </Link>
+      </div>
+      <div className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2  flex justify-center items-center flex-col font-fontInput">
+        <nav className="p-2">
           <ul className="flex flex-col gap-7">
             {menuItems.map((menuItem) => (
               <li
@@ -68,7 +72,7 @@ function Sidebar() {
               </li>
             ))}
           </ul>
-        </div>
+        </nav>
         <div className="flex gap-2 mt-4 w-full text-sm sm:text-lg md:text-2xl p-3 px-4 hover:bg-green-700 rounded-md hover:text-white duration-500 ease-in-out">
           <MdLogout size={25} />
           <button className="">Log Out</button>
