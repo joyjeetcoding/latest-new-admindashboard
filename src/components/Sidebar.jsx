@@ -8,7 +8,7 @@ import {
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { useContext, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { GlobalContext } from "@/context";
 import Link from "next/link";
 
@@ -36,10 +36,12 @@ const menuItems = [
 function Sidebar() {
   const router = useRouter();
   const { sidebar, setSidebar, handleNav } = useContext(GlobalContext);
+  const [active, setActive] = useState(false);
 
-  
+  const pathname = usePathname();
 
   const hanldeNavigate = (menuItem) => {
+    setActive(!active);
     handleNav();
     router.push(menuItem.path);
   };
@@ -65,8 +67,9 @@ function Sidebar() {
               >
                 <label
                   onClick={() => hanldeNavigate(menuItem)}
-                  className={`relative flex gap-2 cursor-pointer hover:bg-green-700 p-2 px-4  rounded-md hover:text-white duration-500 ease-in-out`}
+                  className={`relative flex gap-2 cursor-pointer hover:bg-green-700 active:bg-green-700 p-2 px-4  rounded-md hover:text-white duration-500 ease-in-out `}
                 >
+                  
                   {menuItem.icon}
                   {menuItem.label}
                 </label>
