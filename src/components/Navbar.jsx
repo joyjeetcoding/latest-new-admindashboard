@@ -7,7 +7,7 @@ import { IoMdClose } from "react-icons/io";
 function Navbar() {
   const { sidebar, setSidebar, handleNav } = useContext(GlobalContext);
   return (
-    <div className=" flex flex-col justify-center items-center">
+    <div className=" flex  justify-center items-center">
       {!sidebar ? (
         <GiHamburgerMenu
           size={40}
