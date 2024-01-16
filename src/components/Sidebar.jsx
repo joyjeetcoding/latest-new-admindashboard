@@ -47,13 +47,13 @@ function Sidebar() {
   };
 
   return (
-    <div className={`absolute left-0 top-0 flex flex-col h-screen w-[50%] md:w-[35%] lg:w-[20%] bg-green-500 duration-500 ease-in-out ${!sidebar ? "-translate-x-full lg:translate-x-0" : "translate-x-0"}`}>
+    <div className={`absolute left-0 top-0 flex flex-col h-screen w-[50%] md:w-[35%] lg:w-[20%] bg-green-500  duration-500 ease-in-out ${!sidebar ? "-translate-x-full lg:translate-x-0" : "translate-x-0"}`}>
       {
         !sidebar ? null :
         <IoMdClose onClick={handleNav} size={40} className="text-white cursor-pointer lg:hidden" />
       }
       <div className="flex justify-center items-center">
-        <Link href={"/dashboard"} className="font-heading font-extrabold text-center text-xl md:text-2xl lg:text-3xl p-5 py-7 mt-8">
+        <Link href={"/dashboard"} className="font-logo font-extrabold text-center text-xl md:text-2xl lg:text-3xl p-5 py-7 mt-8">
           ADMINOX
         </Link>
       </div>

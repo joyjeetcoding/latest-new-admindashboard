@@ -20,7 +20,8 @@ export async function POST(req) {
     if (isUserAlreadyExists) {
       return NextResponse.json(
         {
-          message: "User already exists",
+          success: false,
+          message: "User already exists... Please change email",
         },
         {
           status: 401
@@ -37,6 +38,7 @@ export async function POST(req) {
       if (newUser) {
         return NextResponse.json(
           {
+            success: true,
             message: "Account created Successfully",
           },
           {
@@ -48,6 +50,7 @@ export async function POST(req) {
   } catch (error) {
     return NextResponse.json(
       {
+        success: false,
         message: "An error occured during account creation",
       },
       {

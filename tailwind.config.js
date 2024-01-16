@@ -16,6 +16,7 @@ module.exports = {
     fontFamily:{
       heading: 'Montserrat',
       fontInput: 'Salsa',
+      logo: 'Rock Salt'
     }
   },
   plugins: [],

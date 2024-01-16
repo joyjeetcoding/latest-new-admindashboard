@@ -13,10 +13,10 @@ function layout({ children }) {
   };
   return (
     <div className="flex h-screen">
-      <div className="flex-1">
+      <div className="lg:flex-1 z-[99]">
         <Sidebar />
       </div>
-      <div className="flex-[4] flex-col">
+      <div className=" flex-[4] flex-col overflow-x-hidden overflow-y-auto">
         <Navbar />
         <main>
           <div>

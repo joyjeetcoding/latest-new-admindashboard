@@ -4,6 +4,8 @@ import { useState } from "react";
 import { redirect, useRouter } from "next/navigation";
 import { registerNewUser } from "@/services/register";
 import FormInput from "./FormIput";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const initialData = {
   name: "",
@@ -56,33 +58,22 @@ function Register() {
   ];
 
   async function handleRegisteronSubmit() {
-    const data = await registerNewUser(values);
-    console.log(data);
+    const response = await registerNewUser(values);
+    console.log(response);
+    if (response.success) {
+      setValues(initialData);
+      setError("");
+      router.push("/");
+    }
+    else {
+      toast.error(response.message, {
+        position: "top-right",
+      });
+    }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch("/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
-
-      if (response.ok) {
-        setValues(initialData);
-        setError("");
-        router.push("/");
-      }
-      if (response.status === 401) {
-        setError("Account already exists...Change email");
-      }
-    } catch (error) {
-      console.log("Error", error);
-    }
   };
 
   const redirectToSignIn = () => {
@@ -116,6 +107,7 @@ function Register() {
 
   return (
     <div className="h-screen w-full relative font-heading text-xs sm:text-lg md:text-xl lg:text-2xl">
+      <ToastContainer />
       <div className="flex flex-col justify-center items-center border-t border-green-500 border-2 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 p-4 rounded-md shadow-lg lg:w-[30%] max-w-lg">
         <div className="">
           <h1 className="text-green-500 font-bold text-3xl text-center uppercase py-4 underline font-heading">
@@ -132,7 +124,10 @@ function Register() {
                 onChange={onChange}
               />
             ))}
-            <button className="disabled:bg-gray-500 p-3 mt-4 rounded-md bg-green-500 text-white font-semibold font-fontInput" disabled={!isFormValid()}>
+            <button onClick={handleRegisteronSubmit}
+              className="disabled:bg-gray-500 p-3 mt-4 rounded-md bg-green-500 text-white font-semibold font-fontInput"
+              disabled={!isFormValid()}
+            >
               Register
             </button>
             {error && (
