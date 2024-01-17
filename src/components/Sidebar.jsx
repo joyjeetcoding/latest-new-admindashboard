@@ -53,8 +53,8 @@ function Sidebar() {
         <IoMdClose onClick={handleNav} size={40} className="text-white cursor-pointer lg:hidden" />
       }
       <div className="flex justify-center items-center">
-        <Link href={"/dashboard"} className="font-logo font-extrabold text-center text-xl md:text-2xl lg:text-3xl p-5 py-7 mt-8">
-          ADMINOX
+        <Link href={"/dashboard"} className="font-logo font-extrabold text-center text-lg sm:text-xl md:text-2xl lg:text-4xl p-5 py-7 mt-8">
+          Admindox
         </Link>
       </div>
       <div className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2  flex justify-center items-center flex-col font-fontInput">
