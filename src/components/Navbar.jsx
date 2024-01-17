@@ -6,7 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 function Navbar() {
   const { sidebar, setSidebar, handleNav } = useContext(GlobalContext);
   return (
-    <div className="flex justify-center items-center font-fontInput">
+    <div className="p-2 flex justify-center items-center font-fontInput">
       {!sidebar ? (
         <GiHamburgerMenu
           size={40}
@@ -15,7 +15,9 @@ function Navbar() {
         />
       ) : null}
 
-      <form className="w-[80%] lg:max-w-[60%] p-5"> 
+      <h1 className="text-4xl px-5">AdminDox</h1>
+
+      {/* <form className="w-[80%] lg:max-w-[60%] p-5"> 
         <label
           for="default-search"
           class="mb-2 text-sm font-medium text-gray-900 sr-only"
@@ -54,7 +56,7 @@ function Navbar() {
             Search
           </button>
         </div>
-      </form> 
+      </form>  */}
     </div>
   );
 }
