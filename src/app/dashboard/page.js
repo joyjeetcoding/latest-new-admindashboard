@@ -1,9 +1,8 @@
-import UserInfo from "@/components/UserInfo"
-
+import MainDashboard from "../../components/MainDashboard"
 
 function Dashboard() {
   return (
-    <UserInfo />
+    <MainDashboard />
   )
 }
 

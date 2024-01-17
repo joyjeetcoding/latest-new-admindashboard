@@ -1,8 +1,10 @@
-import React from 'react'
+import Userspage from "../../../components/Userspage"
 
 function usersPage() {
   return (
-    <div>usersPage</div>
+    <div>
+      <Userspage />
+    </div>
   )
 }
 

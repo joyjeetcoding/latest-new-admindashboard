@@ -2,12 +2,11 @@
 import { GlobalContext } from "@/context";
 import { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IoMdClose } from "react-icons/io";
 
 function Navbar() {
   const { sidebar, setSidebar, handleNav } = useContext(GlobalContext);
   return (
-    <div className=" flex  justify-center items-center">
+    <div className="flex justify-center items-center font-fontInput">
       {!sidebar ? (
         <GiHamburgerMenu
           size={40}
@@ -45,17 +44,17 @@ function Navbar() {
             type="search"
             id="default-search"
             class="block w-full text-black p-4 ps-10 text-sm  border border-gray-300 rounded-lg bg-gray-50 focus:outline-none"
-            placeholder="Search Here"
+            placeholder="Search"
             required
           />
-          <button
+          <button onClick={(e) => e.preventDefault()}
             type="submit"
-            class="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-500 hover:text-black duration-300 ease-in-out focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2"
+            class="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-500 hover:text-black duration-300 ease-in-out focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-2 lg:px-4 py-2 "
           >
             Search
           </button>
         </div>
-      </form>
+      </form> 
     </div>
   );
 }
