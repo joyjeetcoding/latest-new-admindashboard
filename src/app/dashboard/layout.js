@@ -3,8 +3,6 @@ import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import { GlobalContext } from "@/context";
 import { useContext } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { IoMdClose } from "react-icons/io";
 
 function layout({ children }) {
   const { sidebar, setSidebar } = useContext(GlobalContext);
@@ -13,6 +11,9 @@ function layout({ children }) {
   };
   return (
     <div className="flex h-screen">
+      {
+        !sidebar ? null : <div className="opacity-25 fixed inset-0 z-40 bg-black lg:bg-transparent"></div>
+      }
       <div className="lg:flex-1 z-[99] ">
         <Sidebar />
       </div>

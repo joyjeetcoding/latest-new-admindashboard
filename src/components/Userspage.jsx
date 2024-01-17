@@ -8,10 +8,7 @@ function Userspage() {
           {/* Search bar */}
           <Search placeholder={"Search User"} />
         </div>
-        <div className="z-20">
-          {/* Add new button */}
-          
-        </div>
+        
       </div>
     </div>
   );
