@@ -8,13 +8,19 @@ export default function GlobalState({ children }) {
   const [sidebar, setSidebar] = useState(true);
   const [pageLevelLoader, setPageLoader] = useState(false);
   const [componentLevelLoader, setComponentLevelLoader] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleNav = () => {
     setSidebar(!sidebar);
   };
+  
+  const handleNew = (e) => {
+    e.preventDefault();
+    setShowModal(!showModal);
+  }
 
   return (
-    <GlobalContext.Provider value={{ sidebar, setSidebar, handleNav, pageLevelLoader, setPageLoader, componentLevelLoader, setComponentLevelLoader }}>
+    <GlobalContext.Provider value={{ sidebar, setSidebar, handleNav, pageLevelLoader, setPageLoader, componentLevelLoader, setComponentLevelLoader, handleNew,showModal, setShowModal }}>
       {children}
     </GlobalContext.Provider>
   );

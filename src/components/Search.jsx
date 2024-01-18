@@ -1,10 +1,14 @@
-"use client"
-import { MdSearch } from 'react-icons/md'
+"use client";
+import { GlobalContext } from "@/context";
+import { useContext } from "react";
+import { MdSearch } from "react-icons/md";
 
-function Search({placeholder}) {
+function Search({ placeholder }) {
+  const { handleNew } = useContext(GlobalContext);
+
   return (
-    <div className='font-fontInput'>
-        <form className=" w-full p-5"> 
+    <div className="font-fontInput">
+      <form className=" w-full p-5">
         <label
           for="default-search"
           class="mb-2 text-sm font-medium text-gray-900 sr-only"
@@ -22,16 +26,17 @@ function Search({placeholder}) {
             placeholder={placeholder}
             required
           />
-          <button onClick={(e) => e.preventDefault()}
+          <button
+            onClick={handleNew}
             type="submit"
             class="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-500 hover:text-black duration-300 ease-in-out focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-2 lg:px-4 py-2 "
           >
             Add New
           </button>
         </div>
-      </form> 
+      </form>
     </div>
-  )
+  );
 }
 
-export default Search
+export default Search;
