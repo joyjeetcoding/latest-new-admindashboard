@@ -19,8 +19,8 @@ function Modal({
     <>
       {showModal ? (
         <div>
-          <div className="font-fontInput">
-            <div className="absolute bg-green-700 rounded-2xl left-1/2 top-1/2  -translate-x-1/2  text-white w-1/2 max-w-md">
+          <div className="font-fontInput ">
+            <div className="absolute bg-green-700 rounded-2xl left-1/2 top-1/2  -translate-x-1/2  text-white w-1/2 max-w-md z-[9999]">
               <ImCross
                 onClick={() => setShowModal(!showModal)}
                 size={35}

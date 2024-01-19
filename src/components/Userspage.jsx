@@ -11,6 +11,9 @@ function Userspage() {
 
   return (
     <div className="relative">
+      {
+        showModal ? <div className="opacity-25 fixed inset-0 z-40 bg-black"></div> : null
+      }
       <div className="font-fontInput flex flex-col justify-between px-10 ">
         <div className="w-full">
           {/* Search bar */}

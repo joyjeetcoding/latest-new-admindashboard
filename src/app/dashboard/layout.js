@@ -5,7 +5,7 @@ import { GlobalContext } from "@/context";
 import { useContext } from "react";
 
 function layout({ children }) {
-  const { sidebar, setSidebar } = useContext(GlobalContext);
+  const { sidebar, setSidebar, showModal } = useContext(GlobalContext);
   const handleNav = () => {
     setSidebar(!sidebar);
   };
