@@ -1,16 +1,14 @@
 "use client";
 
 import { GlobalContext } from "@/context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ImCross } from "react-icons/im";
 
 function Modal({
   placeholder1,
   placeholder2,
-  placeholder3,
   label1,
   label2,
-  label3,
   label4,
 }) {
   const { showModal, setShowModal } = useContext(GlobalContext);
@@ -20,7 +18,7 @@ function Modal({
       {showModal ? (
         <div>
           <div className="font-fontInput ">
-            <div className="absolute bg-green-700 rounded-2xl left-1/2 top-1/2  -translate-x-1/2  text-white w-1/2 max-w-md z-[9999]">
+            <div className="absolute bg-green-700 rounded-2xl left-1/2 top-1/2  -translate-x-1/2  text-white w-1/2 max-w-md z-[40]">
               <ImCross
                 onClick={() => setShowModal(!showModal)}
                 size={35}
@@ -39,12 +37,7 @@ function Modal({
                   type="email"
                   placeholder={placeholder2}
                 />
-                <label className="mt-3">{label3}</label>
-                <input
-                  className="focus:outline-none px-2 py-1 rounded-lg text-black"
-                  type="text"
-                  placeholder={placeholder3}
-                />
+                
                 <label className="mt-3">{label4}</label>
                 <select
                   name="status"

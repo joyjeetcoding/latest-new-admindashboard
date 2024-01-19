@@ -1,5 +1,5 @@
 "use client";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Search from "./Search";
 import { FaPen } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
@@ -8,6 +8,11 @@ import Modal from "./Modal";
 
 function Userspage() {
   const { showModal } = useContext(GlobalContext);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("");
+
+  
 
   return (
     <div className="relative">
@@ -30,9 +35,7 @@ function Userspage() {
                   <th scope="col" class="px-6 py-3">
                     Email
                   </th>
-                  <th scope="col" class="px-6 py-3">
-                    Role
-                  </th>
+                  
                   <th scope="col" class="px-6 py-3">
                     Status
                   </th>
@@ -50,7 +53,6 @@ function Userspage() {
                     Joyjeet
                   </th>
                   <td class="px-6 py-4">joy@gmail.com</td>
-                  <td class="px-6 py-4">Admin</td>
                   <td class="px-6 py-4">Active</td>
                   <td class="px-6 py-4 flex">
                     <FaPen
@@ -74,9 +76,8 @@ function Userspage() {
         placeholder1={"Enter your Name"}
         label2={"Email"}
         placeholder2={"Enter your Email"}
-        label3={"Role"}
-        placeholder3={"Enter your Role"}
         label4={"Status"}
+
         /> : null
       }
     </div>
