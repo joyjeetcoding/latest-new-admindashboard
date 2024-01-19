@@ -10,7 +10,7 @@ function Userspage() {
   const { showModal } = useContext(GlobalContext);
 
   return (
-    <div>
+    <div className="relative">
       <div className="font-fontInput flex flex-col justify-between px-10 ">
         <div className="w-full">
           {/* Search bar */}
@@ -66,7 +66,15 @@ function Userspage() {
         </div>
       </div>
       {
-        showModal ? <Modal /> : null
+        showModal ? <Modal
+        label1={"Name"}
+        placeholder1={"Enter your Name"}
+        label2={"Email"}
+        placeholder2={"Enter your Email"}
+        label3={"Role"}
+        placeholder3={"Enter your Role"}
+        label4={"Status"}
+        /> : null
       }
     </div>
   );
