@@ -1,6 +1,6 @@
 "use client";
 import { GlobalContext } from "@/context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { MdSearch } from "react-icons/md";
 
 function Search({ placeholder }) {

@@ -8,16 +8,16 @@ import Button from "../FormControls/button";
 
 function Modal({ formValues, setFormValues, formControls = [], onAdd }) {
   
-  const { showModal, setShowModal } = useContext(GlobalContext);
+  const { showModal, setShowModal, handleCross } = useContext(GlobalContext);
 
   return (
     <>
       {showModal ? (
         <div>
           <div className="font-fontInput ">
-            <div className="absolute bg-green-700 rounded-2xl left-1/2 top-1/2  -translate-x-1/2  text-white w-1/2 max-w-md z-[40]">
+            <div className="absolute bg-green-700 rounded-2xl left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2  text-white w-1/2 max-w-md z-[40]">
               <ImCross
-                onClick={() => setShowModal(!showModal)}
+                onClick={handleCross}
                 size={35}
                 className="p-2 bg-red-500 rounded-lg cursor-pointer"
               />
