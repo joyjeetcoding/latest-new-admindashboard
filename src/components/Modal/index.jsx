@@ -3,14 +3,11 @@
 import { GlobalContext } from "@/context";
 import { useContext, useState } from "react";
 import { ImCross } from "react-icons/im";
+import Input from "../FormControls/input";
+import Select from "../FormControls/select";
+import Button from "../FormControls/button";
 
-function Modal({
-  placeholder1,
-  placeholder2,
-  label1,
-  label2,
-  label4,
-}) {
+function Modal({ formValues, setFormValues, formControls = [] }) {
   const { showModal, setShowModal } = useContext(GlobalContext);
 
   return (
@@ -25,31 +22,35 @@ function Modal({
                 className="p-2 bg-red-500 rounded-lg cursor-pointer"
               />
               <form className="flex flex-col  p-5 rounded-lg">
-                <label className="mt-3">{label1}</label>
-                <input
-                  className="focus:outline-none px-2 py-1 rounded-lg text-black"
-                  type="text"
-                  placeholder={placeholder1}
-                />
-                <label className="mt-3">{label2}</label>
-                <input
-                  className="focus:outline-none px-2 py-1 rounded-lg text-black"
-                  type="email"
-                  placeholder={placeholder2}
-                />
-                
-                <label className="mt-3">{label4}</label>
-                <select
-                  name="status"
-                  id="status"
-                  className="text-black focus:outline-none"
-                >
-                  <option value="active">Active</option>
-                  <option value="not active">Not Active</option>
-                </select>
-                <button className="my-3 p-2 bg-red-500 rounded-lg">
-                  Submit
-                </button>
+                {formControls && formControls.length
+                  ? formControls.map((item) =>
+                      item.componentType === "input" ? (
+                        <Input
+                          type={item.type}
+                          placeholder={item.placeholder}
+                          label={item.label}
+                          value={formValues && formValues[item.id]}
+                          onChange={(e) =>
+                            setFormValues({
+                              ...formValues,
+                              [item.id]: e.target.value,
+                            })
+                          }
+                        />
+                      ) : item.componentType === "select" ? (
+                        <Select
+                          value={formValues && formValues[item.id]}
+                          onChange={(e) => setFormValues({
+                            ...formValues,
+                            [item.id]:e.target.value,
+                          })}
+                          label={item.label}
+                          options={item.options}
+                        />
+                      ) : null
+                    )
+                  : null}
+                  <Button text={"Submit/Update"} />
               </form>
             </div>
           </div>

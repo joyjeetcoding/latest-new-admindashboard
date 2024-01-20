@@ -1,18 +1,24 @@
 "use client";
 import { useContext, useState } from "react";
 import Search from "./Search";
-import { FaPen } from "react-icons/fa";
+import { BsPencilSquare } from "react-icons/bs";
 import { FaTrash } from "react-icons/fa";
 import { GlobalContext } from "@/context";
 import Modal from "./Modal";
+import { usersFormControls } from "@/utils/config";
+
+
+const initialFormValues = {
+  name: "",
+  email: "",
+  status: "",
+}
 
 function Userspage() {
   const { showModal } = useContext(GlobalContext);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("");
+  const [formValues, setFormValues] = useState(initialFormValues);
 
-  
+  console.log(formValues);
 
   return (
     <div className="relative">
@@ -55,8 +61,8 @@ function Userspage() {
                   <td class="px-6 py-4">joy@gmail.com</td>
                   <td class="px-6 py-4">Active</td>
                   <td class="px-6 py-4 flex">
-                    <FaPen
-                      size={15}
+                    <BsPencilSquare 
+                      size={17}
                       className="mr-2 text-green-500 cursor-pointer"
                     />
                     <FaTrash
@@ -72,12 +78,9 @@ function Userspage() {
       </div>
       {
         showModal ? <Modal
-        label1={"Name"}
-        placeholder1={"Enter your Name"}
-        label2={"Email"}
-        placeholder2={"Enter your Email"}
-        label4={"Status"}
-
+        formValues={formValues}
+        setFormValues={setFormValues}
+        formControls={usersFormControls}
         /> : null
       }
     </div>
