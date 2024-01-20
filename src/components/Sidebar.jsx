@@ -27,7 +27,7 @@ const menuItems = [
   },
   {
     id: 3,
-    label: "Users",
+    label: "Visitors",
     path: "/dashboard/users",
     icon: <MdPeople size={25} />,
   },

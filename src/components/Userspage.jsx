@@ -6,6 +6,9 @@ import { FaTrash } from "react-icons/fa";
 import { GlobalContext } from "@/context";
 import Modal from "./Modal";
 import { usersFormControls } from "@/utils/config";
+import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import { registerNewVisitor } from "@/services/visitors";
 
 
 const initialFormValues = {
@@ -14,13 +17,40 @@ const initialFormValues = {
   status: "",
 }
 
-function Userspage() {
-  const { showModal } = useContext(GlobalContext);
+async function Userspage() {
+  const { showModal,setShowModal } = useContext(GlobalContext);
   const [formValues, setFormValues] = useState(initialFormValues);
+  const router = useRouter();
 
   console.log(formValues);
 
+  async function handleAddVisitors() {
+    
+    const response = await registerNewVisitor(formValues);
+    console.log(response);
+
+    if(response.success) {
+      setFormValues(initialFormValues);
+      setShowModal(!showModal);
+      router.refresh();
+    } 
+
+  }
+
+  async function extractAll() {
+    const res = await fetch(process.env.ALL_VISITORS, {
+      method: "GET",
+      cache: "no-store",
+    })
+
+    const data = await res.json();
+    return data;
+  }
+
+  const allVisitors = await extractAll();
   return (
+
+
     <div className="relative">
       {
         showModal ? <div className="opacity-25 fixed inset-0 z-40 bg-black"></div> : null
@@ -28,7 +58,7 @@ function Userspage() {
       <div className="font-fontInput flex flex-col justify-between px-10 ">
         <div className="w-full">
           {/* Search bar */}
-          <Search placeholder={"Search User"} />
+          <Search placeholder={"Search Visitor"} />
         </div>
         <div>
           <div class="relative overflow-x-auto text-black">
@@ -41,7 +71,9 @@ function Userspage() {
                   <th scope="col" class="px-6 py-3">
                     Email
                   </th>
-                  
+                  <th scope="col" class="px-6 py-3">
+                    Location
+                  </th>
                   <th scope="col" class="px-6 py-3">
                     Status
                   </th>
@@ -56,10 +88,11 @@ function Userspage() {
                     scope="row"
                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
                   >
-                    Joyjeet
+                    {allVisitors.data.name}
                   </th>
-                  <td class="px-6 py-4">joy@gmail.com</td>
-                  <td class="px-6 py-4">Active</td>
+                  <td class="px-6 py-4">{allVisitors.data.email}</td>
+                  <td class="px-6 py-4">{allVisitors.data.location}</td>
+                  <td class="px-6 py-4">{allVisitors.data.status}</td>
                   <td class="px-6 py-4 flex">
                     <BsPencilSquare 
                       size={17}
@@ -81,6 +114,7 @@ function Userspage() {
         formValues={formValues}
         setFormValues={setFormValues}
         formControls={usersFormControls}
+        onAdd={handleAddVisitors}
         /> : null
       }
     </div>

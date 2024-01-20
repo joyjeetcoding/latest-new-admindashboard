@@ -6,7 +6,7 @@ import { ImCross } from "react-icons/im";
 import Input from "../FormControls/input";
 import Button from "../FormControls/button";
 
-function Modal({ formValues, setFormValues, formControls = [] }) {
+function Modal({ formValues, setFormValues, formControls = [], onAdd }) {
   
   const { showModal, setShowModal } = useContext(GlobalContext);
 
@@ -40,7 +40,7 @@ function Modal({ formValues, setFormValues, formControls = [] }) {
                       ) : null
                     )
                   : null}
-                <Button text={"Submit/Update"} />
+                <Button text={"Submit/Update"} onClick={onAdd} />
               </form>
             </div>
           </div>
