@@ -1,13 +1,13 @@
 "use client";
 
 import { GlobalContext } from "@/context";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ImCross } from "react-icons/im";
 import Input from "../FormControls/input";
-import Select from "../FormControls/select";
 import Button from "../FormControls/button";
 
 function Modal({ formValues, setFormValues, formControls = [] }) {
+  
   const { showModal, setShowModal } = useContext(GlobalContext);
 
   return (
@@ -37,20 +37,10 @@ function Modal({ formValues, setFormValues, formControls = [] }) {
                             })
                           }
                         />
-                      ) : item.componentType === "select" ? (
-                        <Select
-                          value={formValues && formValues[item.id]}
-                          onChange={(e) => setFormValues({
-                            ...formValues,
-                            [item.id]:e.target.value,
-                          })}
-                          label={item.label}
-                          options={item.options}
-                        />
                       ) : null
                     )
                   : null}
-                  <Button text={"Submit/Update"} />
+                <Button text={"Submit/Update"} />
               </form>
             </div>
           </div>

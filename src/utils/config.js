@@ -15,19 +15,9 @@ export const usersFormControls = [
     },
     {
         id: "status",
-        type: "",
-        placeholder: "",
+        type: "text",
+        placeholder: "Active / Not Active",
         label: "Status",
-        componentType: "select",
-        options: [
-            {
-                id: "act",
-                label: "Active",
-            },
-            {
-                id: "notact",
-                label: "Not Active",
-            },
-        ]
-    },
+        componentType: "input",
+    }
 ]
