@@ -25,6 +25,7 @@ export default function GlobalState({ children }) {
   function handleCross (){
     setShowModal(!showModal);
     router.push("/dashboard/users")
+    router.refresh();
   }
 
   return (

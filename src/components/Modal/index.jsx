@@ -40,7 +40,7 @@ function Modal({ formValues, setFormValues, formControls = [], onAdd }) {
                       ) : null
                     )
                   : null}
-                <Button text={"Submit/Update"} onClick={onAdd} />
+                <Button text={"Submit"} onClick={onAdd} />
               </form>
             </div>
           </div>

@@ -13,8 +13,6 @@ async function extractAll() {
   return data;
 }
 
-
-
 async function Userspage() {
   const allVisitors = await extractAll();
   console.log(allVisitors);
@@ -61,12 +59,12 @@ async function Userspage() {
                     <td class="px-6 py-4">{item.status}</td>
                     <td class="px-6 py-4 flex">
                       <Link href={"/dashboard/users/test"}>
-                      <BsPencilSquare
-                        size={17}
-                        className="mr-2 text-green-500 cursor-pointer"
+                        <BsPencilSquare
+                          size={17}
+                          className="mr-2 text-green-500 cursor-pointer"
                         />
-                        </Link>
-                      
+                      </Link>
+
                       <FaTrash
                         size={15}
                         className="text-red-500 cursor-pointer"
