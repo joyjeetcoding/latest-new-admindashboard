@@ -1,8 +1,15 @@
 import React from 'react'
+import Modal from './Modal'
 
 function EditTopic() {
+  const { showModal, setShowModal, handleCross } = useContext(GlobalContext);
   return (
-    <div>EditTopic</div>
+    <>
+    {
+      show
+      <Modal />
+    }
+    </>
   )
 }
 

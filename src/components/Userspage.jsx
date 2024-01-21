@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Search from "./Search";
 import { BsPencilSquare } from "react-icons/bs";
 import { FaTrash } from "react-icons/fa";
@@ -59,11 +60,12 @@ async function Userspage() {
                     <td class="px-6 py-4">{item.location}</td>
                     <td class="px-6 py-4">{item.status}</td>
                     <td class="px-6 py-4 flex">
-                      
+                      <Link href={"/dashboard/users/test"}>
                       <BsPencilSquare
                         size={17}
                         className="mr-2 text-green-500 cursor-pointer"
                         />
+                        </Link>
                       
                       <FaTrash
                         size={15}
