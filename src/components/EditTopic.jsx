@@ -3,22 +3,30 @@ import React, { useContext, useState } from "react";
 import Modal from "./Modal";
 import { GlobalContext } from "@/context";
 import { useRouter } from "next/navigation";
-import { usersFormControls } from "@/utils/config";
-import Input from "./FormControls/input";
 import { ImCross } from "react-icons/im";
 import Button from "./FormControls/button";
 
-const initialFormValues = {
-  name: "",
-  email: "",
-  status: "",
-};
+function EditTopic({ id, name, email, location, status }) {
+  const { handleCross } = useContext(GlobalContext);
+  
+  
+  // We are getting from the EditForm page.js passed parameters
+  const [newName, setNewName] = useState(name);
+  const [newEmail, setNewEmail] = useState(email);
+  const [newLocation, setNewLocation] = useState(location);
+  const [newStatus, setNewStatus] = useState(status);
+  
+    console.log("Name", newName);
+    console.log("Email", newEmail);
+    console.log("Location", newLocation);
+    console.log("Status", newStatus);
 
-function EditTopic() {
-  const { handleNew, showModal, setShowModal, handleCross } = useContext(GlobalContext);
-  const [formValues, setFormValues] = useState(initialFormValues);
-  console.log(formValues);
+  const hanleSubmit = (e) => {
+    e.preventDefault();
+  }
+
   const router = useRouter();
+
   return (
     <>
       <div>
@@ -30,23 +38,40 @@ function EditTopic() {
               size={35}
               className="p-2 bg-red-500 rounded-lg cursor-pointer"
             />
-            <form className="flex flex-col  p-5 rounded-lg">
-              {usersFormControls.map((item) => (
-                <Input
-                  type={item.type}
-                  label={item.label}
-                  placeholder={item.placeholder}
-                  value={formValues && formValues[item.id]}
-                  onChange={(e) =>
-                    setFormValues({
-                      ...formValues,
-                      [item.id]: e.target.value,
-                    })
-                  }
-                />
-              ))}
-
-              <Button text={"Update"} />
+            <form onSubmit={hanleSubmit} className="flex flex-col  p-5 rounded-lg">
+              <label className="mt-3">Name</label>
+              <input
+                type="text"
+                placeholder="Enter User's Name"
+                value={newName}
+                onChange={(e) => setNewName(e.target.value)}
+                className="focus:outline-none px-2 py-1 rounded-lg text-black"
+              />
+              <label className="mt-3">Email</label>
+              <input
+                type="email"
+                placeholder="Enter User's email"
+                value={newEmail}
+                onChange={(e) => setNewEmail(e.target.value)}
+                className="focus:outline-none px-2 py-1 rounded-lg text-black"
+              />
+              <label className="mt-3">Location</label>
+              <input
+                type="text"
+                placeholder="Enter User's Location"
+                value={newLocation}
+                onChange={(e) => setNewLocation(e.target.value)}
+                className="focus:outline-none px-2 py-1 rounded-lg text-black"
+              />
+              <label className="mt-3">Status</label>
+              <input
+                type="text"
+                placeholder="Active/Not Active"
+                value={newStatus}
+                onChange={(e) => setNewStatus(e.target.value)}
+                className="focus:outline-none px-2 py-1 rounded-lg text-black"
+              />
+              <button type="submit" className="my-3 p-2 bg-red-500 rounded-lg">Update</button>
             </form>
           </div>
         </div>

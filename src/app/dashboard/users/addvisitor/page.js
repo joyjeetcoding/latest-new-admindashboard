@@ -1,7 +1,7 @@
 "use client";
 import Modal from "@/components/Modal";
 import { GlobalContext } from "@/context";
-import { registerNewVisitor } from "@/services/visitors";
+import { registerNewVisitor } from "@/services/visitors/create";
 import { usersFormControls } from "@/utils/config";
 import { useRouter } from "next/navigation";
 import React, { useContext, useState } from "react";
@@ -25,8 +25,8 @@ function page() {
     if (response.success) {
       setFormValues(initialFormValues);
       setShowModal(!showModal);
-      router.refresh();
       router.push("/dashboard/users");
+      router.refresh();
     }
   }
   return (

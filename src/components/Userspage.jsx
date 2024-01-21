@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Search from "./Search";
 import { BsPencilSquare } from "react-icons/bs";
-import { FaTrash } from "react-icons/fa";
+import RemoveBtn from "./RemoveBtn";
 
 async function extractAll() {
   const res = await fetch(process.env.ALL_VISITORS, {
@@ -58,17 +58,14 @@ async function Userspage() {
                     <td class="px-6 py-4">{item.location}</td>
                     <td class="px-6 py-4">{item.status}</td>
                     <td class="px-6 py-4 flex">
-                      <Link href={"/dashboard/users/test"}>
+                      <Link href={`/dashboard/users/${item._id}`}>
                         <BsPencilSquare
                           size={17}
                           className="mr-2 text-green-500 cursor-pointer"
                         />
                       </Link>
 
-                      <FaTrash
-                        size={15}
-                        className="text-red-500 cursor-pointer"
-                      />
+                      <RemoveBtn id={item._id} />
                     </td>
                   </tr>
                 ))}
