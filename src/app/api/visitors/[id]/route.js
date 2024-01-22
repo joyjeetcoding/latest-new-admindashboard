@@ -6,13 +6,13 @@ export async function PUT(req, {params}) {
     const {id} = params;
     try {
         await connectToDB();
-        const newData = await req.json();
-        const updatedData = await Visitors.findByIdAndUpdate(id, newData);
+        const {newName: name, newEmail: email, newLocation: location, newStatus:status} = await req.json();
+        const updatedData = await Visitors.findByIdAndUpdate(id, {name, email, location, status});
 
         if(updatedData) {
             return NextResponse.json({
                 success: true,
-                message: "Updated Successfully",
+                message: "Updated successfully"
             })
         } else {
             return NextResponse.json({
@@ -35,17 +35,15 @@ export async function GET(req, {params}) {
     const {id} = params;
     try {
         await connectToDB();
-        const singleElement = await Visitors.findOne({_id: id});
-        if(singleElement) {
+        const singleVisitor = await Visitors.findOne({_id: id});
+        if(singleVisitor) {
             return NextResponse.json({
-                success: true,
-                message: "We got the single User",
-            })
+                singleVisitor,
+            }, {status: 201})
         } else {
             return NextResponse.json({
-                success: false,
                 message: "Something went wrong... Please trye again later"
-            })
+            }, {status: 501})
         }
         
     } catch (error) {

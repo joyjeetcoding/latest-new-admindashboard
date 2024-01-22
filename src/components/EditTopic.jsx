@@ -7,8 +7,9 @@ import { ImCross } from "react-icons/im";
 import Button from "./FormControls/button";
 
 function EditTopic({ id, name, email, location, status }) {
-  const { handleCross } = useContext(GlobalContext);
-  
+  const { handleCross, showModal, setShowModal } = useContext(GlobalContext);
+  const router = useRouter();
+
   
   // We are getting from the EditForm page.js passed parameters
   const [newName, setNewName] = useState(name);
@@ -21,11 +22,32 @@ function EditTopic({ id, name, email, location, status }) {
     console.log("Location", newLocation);
     console.log("Status", newStatus);
 
-  const hanleSubmit = (e) => {
+  const hanleSubmit = async(e) => {
     e.preventDefault();
+
+    try {
+      const res = await fetch(`http://localhost:3000/api/visitors/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type":"application/json",
+        },
+        body: JSON.stringify({newName, newEmail, newLocation, newStatus}),
+      });
+      
+      if(res.ok) {
+        setShowModal(!showModal);
+        router.push("/dashboard/users");
+        router.refresh();
+      }
+
+      console.log(res);
+
+    } catch (error) {
+      console.log("Error", error);
+    }
+
   }
 
-  const router = useRouter();
 
   return (
     <>

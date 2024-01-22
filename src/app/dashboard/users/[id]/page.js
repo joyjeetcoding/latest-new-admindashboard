@@ -1,6 +1,6 @@
 import EditTopic from "@/components/EditTopic";
 
-const getVisitorById = async (id) => {
+async function getVisitorById(id) {
   try {
     const res = await fetch(`http://localhost:3000/api/visitors/${id}`, {
       method: "GET",
@@ -10,7 +10,8 @@ const getVisitorById = async (id) => {
       console.log("Failed to fetch visitor");
     }
 
-    return res.json();
+    const data = await res.json();
+    return data
   } catch (error) {
     console.log("Error", error);
   }
@@ -18,8 +19,9 @@ const getVisitorById = async (id) => {
 
 async function page({ params }) {
   const { id } = params;
-  const { visitor } = await getVisitorById(id);
-  const { name, email, location, status } = visitor;
+
+  const { singleVisitor } = await getVisitorById(id);
+  const { name, email, location, status } = singleVisitor;
   return (
     <div>
       <EditTopic id={id} name={name} email={email} location={location} status={status} />
