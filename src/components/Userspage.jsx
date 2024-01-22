@@ -24,40 +24,40 @@ async function Userspage() {
           <Search placeholder={"Search Visitor"} />
         </div>
         <div>
-          <div class="relative overflow-x-auto text-black">
-            <table class="w-full text-sm text-left  text-gray-500 dark:text-gray-400">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-50  dark:text-gray-400">
+          <div className="relative overflow-x-auto text-black">
+            <table className="w-full text-sm text-left  text-gray-500 dark:text-gray-400">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50  dark:text-gray-400">
                 <tr>
-                  <th scope="col" class="px-6 py-3">
+                  <th scope="col" className="px-6 py-3">
                     Name
                   </th>
-                  <th scope="col" class="px-6 py-3">
+                  <th scope="col" className="px-6 py-3">
                     Email
                   </th>
-                  <th scope="col" class="px-6 py-3">
+                  <th scope="col" className="px-6 py-3">
                     Location
                   </th>
-                  <th scope="col" class="px-6 py-3">
+                  <th scope="col" className="px-6 py-3">
                     Status
                   </th>
-                  <th scope="col" class="px-6 py-3">
+                  <th scope="col" className="px-6 py-3">
                     Action
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {allVisitors.data.map((item) => (
-                  <tr key={item.id} class="bg-white border-b ">
+                  <tr key={item.id} className="bg-white border-b ">
                     <th
                       scope="row"
-                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
                     >
                       {item.name}
                     </th>
-                    <td class="px-6 py-4">{item.email}</td>
-                    <td class="px-6 py-4">{item.location}</td>
-                    <td class="px-6 py-4">{item.status}</td>
-                    <td class="px-6 py-4 flex">
+                    <td className="px-6 py-4">{item.email}</td>
+                    <td className="px-6 py-4">{item.location}</td>
+                    <td className="px-6 py-4">{item.status}</td>
+                    <td className="px-6 py-4 flex">
                       <Link href={`/dashboard/users/${item._id}`}>
                         <BsPencilSquare
                           size={17}
