@@ -16,20 +16,32 @@ export default function GlobalState({ children }) {
     setSidebar(!sidebar);
   };
   
-  const handleNew = (e) => {
+  const handleNewVisitor = (e) => {
     e.preventDefault();
     setShowModal(!showModal);
     router.push("/dashboard/users/addvisitor");
   }
 
-  function handleCross (){
+  const handleNewProduct = (e) => {
+    e.preventDefault();
+    setShowModal(!showModal);
+    router.push("/dashboard/products/addproduct");
+  }
+
+  function handleCrossonProduct (){
+    setShowModal(!showModal);
+    router.push("/dashboard/products")
+    router.refresh();
+  }
+
+  function handleCrossonVisitor (){
     setShowModal(!showModal);
     router.push("/dashboard/users")
     router.refresh();
   }
 
   return (
-    <GlobalContext.Provider value={{ handleCross, sidebar, setSidebar, handleNav, pageLevelLoader, setPageLoader, componentLevelLoader, setComponentLevelLoader, handleNew,showModal, setShowModal }}>
+    <GlobalContext.Provider value={{ handleCrossonVisitor, handleCrossonProduct, sidebar, setSidebar, handleNav, pageLevelLoader, setPageLoader, componentLevelLoader, setComponentLevelLoader, handleNewVisitor, handleNewProduct, showModal, setShowModal }}>
       {children}
     </GlobalContext.Provider>
   );

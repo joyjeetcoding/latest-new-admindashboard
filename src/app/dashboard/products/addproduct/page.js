@@ -1,12 +1,11 @@
 "use client";
-
 import { GlobalContext } from "@/context";
-import { useContext, useState } from "react";
-import { ImCross } from "react-icons/im";
 import { useRouter } from "next/navigation";
+import React, { useContext, useState } from "react";
+import { ImCross } from "react-icons/im";
 
-function Modal() {
-  const { showModal, setShowModal, handleCrossonVisitor } = useContext(GlobalContext);
+function page() {
+  const { showModal ,setShowModal, handleCrossonProduct} = useContext(GlobalContext);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -22,40 +21,20 @@ function Modal() {
   const hanleSubmit = async (e) => {
     e.preventDefault();
 
-    if(!name || !email || !location || !status) {
-      alert("Every field is necessary!!!");
-      return;
-    }
-
-    try {
-      const res = await fetch("/api/visitors/addvisitors", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email, location, status }),
-      });
-
-      if(res.ok) {
-        setShowModal(!showModal);
-        router.push("/dashboard/users");
-        router.refresh();
-      }
-
-      console.log(res);
-    } catch (error) {
-      console.log("Error", error);
-    }
+    
   };
 
   return (
-    <>
+    <div>
+      {showModal ? (
+        <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+      ) : null}
       {showModal ? (
         <div>
           <div className="font-fontInput ">
             <div className="absolute bg-green-700 rounded-2xl left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2  text-white w-1/2 max-w-md z-[40]">
               <ImCross
-                onClick={handleCrossonVisitor}
+                onClick={handleCrossonProduct}
                 size={35}
                 className="p-2 bg-red-500 rounded-lg cursor-pointer"
               />
@@ -106,8 +85,8 @@ function Modal() {
           </div>
         </div>
       ) : null}
-    </>
+    </div>
   );
 }
 
-export default Modal;
+export default page;

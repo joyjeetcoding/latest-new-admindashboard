@@ -2,6 +2,7 @@
 import { GlobalContext } from "@/context";
 import { useContext, useState } from "react";
 import { MdSearch } from "react-icons/md";
+import AddNewBtn from "./FormControls/addnewVisitor";
 
 function Search({ placeholder }) {
   const { handleNew } = useContext(GlobalContext);
@@ -25,13 +26,6 @@ function Search({ placeholder }) {
             placeholder={placeholder}
             required
           />
-          <button
-            onClick={handleNew}
-            type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-500 hover:text-black duration-300 ease-in-out focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-2 lg:px-4 py-2 "
-          >
-            Add New
-          </button>
         </div>
       </form>
     </div>
