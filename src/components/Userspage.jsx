@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Search from "./Search";
 import { BsPencilSquare } from "react-icons/bs";
-import RemoveBtn from "./RemoveBtn";
 import AddNewBtnVisitors from "./FormControls/addnewVisitor";
+import RemoveBtnforVisitor from "./RemoveBtn";
 
 async function extractAll() {
   const res = await fetch(process.env.ALL_VISITORS, {
@@ -16,7 +16,7 @@ async function extractAll() {
 
 async function Userspage() {
   const allVisitors = await extractAll();
-  console.log(allVisitors);
+  // console.log(allVisitors);
   return (
     <div className="relative">
       <div className="font-fontInput flex flex-col justify-between px-10 ">
@@ -49,7 +49,7 @@ async function Userspage() {
               </thead>
               <tbody>
                 {allVisitors.data.map((item) => (
-                  <tr key={item.id} className="bg-white border-b ">
+                  <tr key={item._id} className="bg-white border-b ">
                     <th
                       scope="row"
                       className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
@@ -67,7 +67,7 @@ async function Userspage() {
                         />
                       </Link>
 
-                      <RemoveBtn id={item._id} />
+                      <RemoveBtnforVisitor id={item._id} />
                     </td>
                   </tr>
                 ))}

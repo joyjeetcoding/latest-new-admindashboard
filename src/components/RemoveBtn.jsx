@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { FaTrash } from "react-icons/fa";
 
-function RemoveBtn({ id }) {
+function RemoveBtnforVisitor({ id }) {
   const router = useRouter();
 
   const deleteVisitor = async () => {
@@ -33,4 +33,4 @@ function RemoveBtn({ id }) {
   );
 }
 
-export default RemoveBtn;
+export default RemoveBtnforVisitor;

@@ -1,13 +1,13 @@
 "use client";
 import React, { useContext, useState } from "react";
-import Modal from "./Modal";
+import Modal from "./Modal/ModalforVisitor";
 import { GlobalContext } from "@/context";
 import { useRouter } from "next/navigation";
 import { ImCross } from "react-icons/im";
 import Button from "./FormControls/button";
 
 function EditTopic({ id, name, email, location, status }) {
-  const { handleCross, showModal, setShowModal } = useContext(GlobalContext);
+  const { handleCrossonVisitor, showModal, setShowModal } = useContext(GlobalContext);
   const router = useRouter();
 
   
@@ -56,7 +56,7 @@ function EditTopic({ id, name, email, location, status }) {
         <div className="font-fontInput ">
           <div className="absolute bg-green-700 rounded-2xl left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2  text-white w-1/2 max-w-md z-[40]">
             <ImCross
-              onClick={handleCross}
+              onClick={handleCrossonVisitor}
               size={35}
               className="p-2 bg-red-500 rounded-lg cursor-pointer"
             />

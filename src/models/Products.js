@@ -3,10 +3,9 @@ import mongoose from "mongoose";
 const ProductSchema = new mongoose.Schema(
   {
     deviceName: String,
-    price: Number,
-    dop: Date,
-    sales: Number,
     month: String,
+    price: Number,
+    sales: Number,
   },
   { timestamps: true }
 );
