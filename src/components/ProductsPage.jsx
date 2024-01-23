@@ -66,7 +66,7 @@ async function ProductsPage() {
                     <td className="px-6 py-4">{item.sales}</td>
                     <td className="px-6 py-4">{item.sales * item.price}</td>
                     <td className="px-6 py-4 flex">
-                      <Link href={`/dashboard/products/${123}`}>
+                      <Link href={`/dashboard/products/${item._id}`}>
                         <BsPencilSquare
                           size={17}
                           className="mr-2 text-green-500 cursor-pointer"
