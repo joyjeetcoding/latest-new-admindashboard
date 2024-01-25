@@ -5,24 +5,14 @@ import AddNewBtnProducts from "./FormControls/addNEwProducts";
 import RemoveBtnforProducts from "./RemoveBtnforProducts";
 import { connectToDB } from "@/database/mongodb";
 import Products from "@/models/Products";
+import { fetchAllProducts } from "./getAllProducts";
 
-async function extractAll(q) {
-  // "i" means case insensitve means we can use capital letters as well
-  const regex = new RegExp(q, "i");
 
-  try {
-    await connectToDB();
-    const users = await Products.find({ deviceName: { $regex: regex } });
-    return users;
-  } catch (error) {
-    console.log("Error", error);
-  }
-}
 
 async function ProductsPage({ searchParams }) {
   const q = searchParams?.q || "";
 
-  const allProducts = await extractAll(q);
+  const allProducts = await fetchAllProducts(q);
   console.log(allProducts);
 
   return (
