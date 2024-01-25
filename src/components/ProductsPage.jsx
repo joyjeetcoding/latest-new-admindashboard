@@ -3,23 +3,27 @@ import Search from "./Search";
 import { BsPencilSquare } from "react-icons/bs";
 import AddNewBtnProducts from "./FormControls/addNEwProducts";
 import RemoveBtnforProducts from "./RemoveBtnforProducts";
+import { connectToDB } from "@/database/mongodb";
+import Products from "@/models/Products";
 
-async function extractAll() {
-  const res = await fetch(process.env.ALL_PRODUCTS, {
-    method: "GET",
-    cache: "no-store",
-  });
+async function extractAll(q) {
+  // "i" means case insensitve means we can use capital letters as well
+  const regex = new RegExp(q, "i");
 
-  const data = await res.json();
-  return data;
+  try {
+    await connectToDB();
+    const users = await Products.find({ deviceName: { $regex: regex } });
+    return users;
+  } catch (error) {
+    console.log("Error", error);
+  }
 }
 
-async function ProductsPage({searchParams}) {
-  const query = searchParams?.query || ""
+async function ProductsPage({ searchParams }) {
+  const q = searchParams?.q || "";
 
-  const allProducts = await extractAll();
+  const allProducts = await extractAll(q);
   console.log(allProducts);
-
 
   return (
     <div className="relative">
@@ -55,20 +59,20 @@ async function ProductsPage({searchParams}) {
                 </tr>
               </thead>
               <tbody>
-                {allProducts.data.map((item) => (
-                  <tr className="bg-white border-b ">
-                    <th
+                {allProducts.map((item) => (
+                  <tr key={item._id} className="bg-white border-b ">
+                    <td
                       scope="row"
                       className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
                     >
                       {item.deviceName}
-                    </th>
+                    </td>
                     <td className="px-6 py-4">{item.month}</td>
                     <td className="px-6 py-4">{item.price}</td>
                     <td className="px-6 py-4">{item.sales}</td>
                     <td className="px-6 py-4">{item.sales * item.price}</td>
                     <td className="px-6 py-4 flex">
-                      <Link href={`/dashboard/products/${item._id}`}>
+                      <Link href={`/dashboard/products/${item.id}`}>
                         <BsPencilSquare
                           size={17}
                           className="mr-2 text-green-500 cursor-pointer"

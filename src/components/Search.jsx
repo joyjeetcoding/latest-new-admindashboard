@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { MdSearch } from "react-icons/md";
 import AddNewBtn from "./FormControls/addnewVisitor";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { set } from "mongoose";
 
 function Search({ placeholder }) {
   const { handleNew } = useContext(GlobalContext);
@@ -17,7 +18,13 @@ function Search({ placeholder }) {
   const hanldeSearch = (e) => {
     const params = new URLSearchParams(searchParams);
 
-    params.set("q", e.target.value);
+    if(e.target.value) {
+      // set(name, value)
+      params.set("q", e.target.value);
+    } else {
+      params.delete("q")
+    }
+
 
     replace(`${pathName}?${params}`);
   };
