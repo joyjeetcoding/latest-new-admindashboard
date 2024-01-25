@@ -3,16 +3,29 @@ import { GlobalContext } from "@/context";
 import { useContext, useState } from "react";
 import { MdSearch } from "react-icons/md";
 import AddNewBtn from "./FormControls/addnewVisitor";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 function Search({ placeholder }) {
   const { handleNew } = useContext(GlobalContext);
+  const { replace } = useRouter();
+  const searchParams = useSearchParams();
+  const pathName = usePathname();
+
+  console.log(searchParams);
+  console.log(pathName);
+
+  const hanldeSearch = (e) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set("q", e.target.value);
+
+    replace(`${pathName}?${params}`);
+  };
 
   return (
     <div className="font-fontInput">
       <form className=" w-full p-5">
-        <label
-          className="mb-2 text-sm font-medium text-gray-900 sr-only"
-        >
+        <label className="mb-2 text-sm font-medium text-gray-900 sr-only">
           Search
         </label>
         <div className="relative">
@@ -24,6 +37,7 @@ function Search({ placeholder }) {
             id="default-search"
             className="block w-full text-black p-4 ps-8 text-sm  border border-gray-300 rounded-lg bg-gray-50 focus:outline-none"
             placeholder={placeholder}
+            onChange={hanldeSearch}
             required
           />
         </div>

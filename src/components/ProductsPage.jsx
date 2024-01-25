@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Search from "./Search";
 import { BsPencilSquare } from "react-icons/bs";
-import RemoveBtn from "./RemoveBtn";
 import AddNewBtnProducts from "./FormControls/addNEwProducts";
 import RemoveBtnforProducts from "./RemoveBtnforProducts";
 
@@ -15,9 +14,12 @@ async function extractAll() {
   return data;
 }
 
-async function ProductsPage() {
+async function ProductsPage({searchParams}) {
+  const query = searchParams?.query || ""
+
   const allProducts = await extractAll();
   console.log(allProducts);
+
 
   return (
     <div className="relative">
