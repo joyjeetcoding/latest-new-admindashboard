@@ -6,28 +6,9 @@ import AddNewBtn from "./FormControls/addnewVisitor";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { set } from "mongoose";
 
-function Search({ placeholder }) {
+function SearchforVisitors({ placeholder }) {
   const { handleNew } = useContext(GlobalContext);
-  const { replace } = useRouter();
-  const searchParams = useSearchParams();
-  const pathName = usePathname();
 
-  console.log(searchParams);
-  console.log(pathName);
-
-  const hanldeSearch = (e) => {
-    const params = new URLSearchParams(searchParams);
-
-    if(e.target.value) {
-      // set(name, value)
-      params.set("q", e.target.value);
-    } else {
-      params.delete("q")
-    }
-
-
-    replace(`${pathName}?${params}`);
-  };
 
   return (
     <div className="font-fontInput">
@@ -44,7 +25,6 @@ function Search({ placeholder }) {
             id="default-search"
             className="block w-full text-black p-4 ps-8 text-sm  border border-gray-300 rounded-lg bg-gray-50 focus:outline-none"
             placeholder={placeholder}
-            onChange={hanldeSearch}
             required
           />
         </div>
@@ -53,4 +33,4 @@ function Search({ placeholder }) {
   );
 }
 
-export default Search;
+export default SearchforVisitors;

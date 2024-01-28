@@ -3,7 +3,9 @@ import Products from "@/models/Products";
 
 export const fetchAllProducts = async(q) => {
     // "i" means case insensitve means we can use capital letters as well
+    console.log("We got", q);
     const regex = new RegExp(q, "i");
+
   
     try {
        connectToDB();

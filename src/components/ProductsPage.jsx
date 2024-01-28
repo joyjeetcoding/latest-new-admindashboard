@@ -1,11 +1,12 @@
 import Link from "next/link";
-import Search from "./Search";
+import Search from "./SearchforProducts";
 import { BsPencilSquare } from "react-icons/bs";
 import AddNewBtnProducts from "./FormControls/addNEwProducts";
 import RemoveBtnforProducts from "./RemoveBtnforProducts";
 import { connectToDB } from "@/database/mongodb";
 import Products from "@/models/Products";
 import { fetchAllProducts } from "./getAllProducts";
+import SearchforProducts from "./SearchforProducts";
 
 
 
@@ -13,14 +14,13 @@ async function ProductsPage({ searchParams }) {
   const q = searchParams?.q || "";
 
   const allProducts = await fetchAllProducts(q);
-  console.log(allProducts);
 
   return (
     <div className="relative">
       <div className="font-fontInput flex flex-col justify-between px-10 ">
         <div className="w-full relative">
           {/* Search bar */}
-          <Search placeholder={"Search Products"} />
+          <SearchforProducts placeholder={"Search Products"} />
           <AddNewBtnProducts />
         </div>
         <div>
@@ -50,7 +50,7 @@ async function ProductsPage({ searchParams }) {
               </thead>
               <tbody>
                 {allProducts.map((item) => (
-                  <tr key={item._id} className="bg-white border-b ">
+                  <tr key={`${item._id}`} className="bg-white border-b ">
                     <td
                       scope="row"
                       className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
@@ -69,7 +69,7 @@ async function ProductsPage({ searchParams }) {
                         />
                       </Link>
 
-                      <RemoveBtnforProducts id={item._id} />
+                      <RemoveBtnforProducts id={`${item._id}`} />
                     </td>
                   </tr>
                 ))}

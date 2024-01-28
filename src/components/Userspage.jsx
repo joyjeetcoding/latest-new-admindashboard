@@ -1,8 +1,9 @@
 import Link from "next/link";
-import Search from "./Search";
+import Search from "./SearchforProducts";
 import { BsPencilSquare } from "react-icons/bs";
 import AddNewBtnVisitors from "./FormControls/addnewVisitor";
 import RemoveBtnforVisitor from "./RemoveBtn";
+import SearchforVisitors from "./SearchforVisitors";
 
 async function extractAll() {
   const res = await fetch(process.env.ALL_VISITORS, {
@@ -22,7 +23,7 @@ async function Userspage() {
       <div className="font-fontInput flex flex-col justify-between px-10 ">
         <div className="w-full relative">
           {/* Search bar */}
-          <Search placeholder={"Search Visitor"} />
+          <SearchforVisitors placeholder={"Search Visitor"} />
           <AddNewBtnVisitors />
         </div>
         <div>
