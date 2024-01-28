@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import FormInput from "./FormIput";
+import { signIn } from "@/app/auth";
 
 const initialData = {
   email: "",
@@ -17,6 +18,22 @@ function Login() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const res = await signIn("credentials", {
+        email,
+        password,
+      })
+
+      if(res.error) {
+        setError("Invalid Credentials");
+        return;
+      }
+
+      router.replace("dashboard");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const inputs = [
