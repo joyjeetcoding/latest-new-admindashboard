@@ -4,28 +4,30 @@ import { useContext, useState } from "react";
 import { MdSearch } from "react-icons/md";
 import AddNewBtn from "./FormControls/addnewVisitor";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { set } from "mongoose";
+import { useDebouncedCallback } from "use-debounce";
 
 function SearchforProducts({ placeholder }) {
-  const { handleNew } = useContext(GlobalContext);
+  const pathname = usePathname();
   const { replace } = useRouter();
   const searchParams = useSearchParams();
-  const pathName = usePathname();
 
-
-  const handleSearch = (e) => {
+  const handleSearch = useDebouncedCallback((e) => {
     const params = new URLSearchParams(searchParams);
+    console.log(e.target.value);
 
-    if(e.target.value) {
-      // set(name, value)
-      params.set("q", e.target.value);
+    params.set("page", 1);
+    
+    if (e.target.value) {
+      e.target.value.length > 2 && params.set('query', e.target.value);
     } else {
-      params.delete("q")
+      params.delete('query');
     }
 
+    replace(`${pathname}?${params.toString()}`);
+    
+  }, 300);
 
-    replace(`${pathName}?${params}`);
-  };
+  console.log(pathname);
 
   return (
     <div className="font-fontInput">
@@ -43,6 +45,7 @@ function SearchforProducts({ placeholder }) {
             className="block w-full text-black p-4 ps-8 text-sm  border border-gray-300 rounded-lg bg-gray-50 focus:outline-none"
             placeholder={placeholder}
             onChange={handleSearch}
+            defaultValue={searchParams.get("query")?.toString()}
             required
           />
         </div>

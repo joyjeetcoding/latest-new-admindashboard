@@ -8,12 +8,11 @@ import Products from "@/models/Products";
 import { fetchAllProducts } from "./getAllProducts";
 import SearchforProducts from "./SearchforProducts";
 
-
-
 async function ProductsPage({ searchParams }) {
-  const q = searchParams?.q || "";
 
-  const allProducts = await fetchAllProducts(q);
+  const query = searchParams?.query || '';
+  const page = Number(searchParams?.page) || 1;
+  const allProducts = await fetchAllProducts(query, page);
 
   return (
     <div className="relative">
