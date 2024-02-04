@@ -1,17 +1,17 @@
 import { FaUser, FaUsers } from "react-icons/fa"
 
-function Card() {
+function Card({data, label, icon}) {
   return (
-    <div className="rounded-md py-4">
-        <div className="flex items-center justify-center flex-col border-t border-green-500 border-2">
+    <div className="rounded-md w-full p-4">
+        <div className="flex items-center justify-center  flex-col border-t border-green-500 border-2 p-3 shadow-lg">
             <div className="w-11 h-11 rounded-full bg-green-100 my-2">
                 {/* Icon */}
-                <FaUsers size={28} className="absolute translate-y-2 translate-x-2" />
+                {icon}
             </div>
             <div className="flex flex-col justify-center items-center">
                 {/* Number */}
-                <h4 className="text-2xl">50</h4>
-                <span>Total No. of Premium Visitors</span>
+                <h4 className="text-2xl">{data}</h4>
+                <span>{label}</span>
             </div>
         </div>
     </div>
