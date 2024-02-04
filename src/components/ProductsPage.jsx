@@ -1,18 +1,25 @@
 import Link from "next/link";
-import Search from "./SearchforProducts";
 import { BsPencilSquare } from "react-icons/bs";
 import AddNewBtnProducts from "./FormControls/addNEwProducts";
 import RemoveBtnforProducts from "./RemoveBtnforProducts";
-import { connectToDB } from "@/database/mongodb";
-import Products from "@/models/Products";
-import { fetchAllProducts } from "./getAllProducts";
+
 import SearchforProducts from "./SearchforProducts";
+
+async function fetchAllProducts() {
+  const res = await fetch(process.env.ALL_PRODUCTS, {
+    method: "GET",
+    cache: "no-store",
+  });
+
+  const data = await res.json();
+  return data;
+}
+
 
 async function ProductsPage({ searchParams }) {
 
-  const query = searchParams?.query || '';
-  const page = Number(searchParams?.page) || 1;
-  const allProducts = await fetchAllProducts(query, page);
+ 
+  const allProducts = await fetchAllProducts();
 
   return (
     <div className="relative">
@@ -48,7 +55,7 @@ async function ProductsPage({ searchParams }) {
                 </tr>
               </thead>
               <tbody>
-                {allProducts.map((item) => (
+                {allProducts.data.map((item) => (
                   <tr key={`${item._id}`} className="bg-white border-b ">
                     <td
                       scope="row"
@@ -61,7 +68,7 @@ async function ProductsPage({ searchParams }) {
                     <td className="px-6 py-4">{item.sales}</td>
                     <td className="px-6 py-4">{item.sales * item.price}</td>
                     <td className="px-6 py-4 flex">
-                      <Link href={`/dashboard/products/${item.id}`}>
+                      <Link href={`/dashboard/products/${item._id}`}>
                         <BsPencilSquare
                           size={17}
                           className="mr-2 text-green-500 cursor-pointer"
