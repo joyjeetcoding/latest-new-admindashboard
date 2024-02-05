@@ -7,47 +7,44 @@ import { ImCross } from "react-icons/im";
 import Button from "./FormControls/button";
 
 function EditTopic({ id, name, email, location, status }) {
-  const { handleCrossonVisitor, showModal, setShowModal } = useContext(GlobalContext);
+  const { handleCrossonVisitor, showModal, setShowModal } =
+    useContext(GlobalContext);
   const router = useRouter();
 
-  
   // We are getting from the EditForm page.js passed parameters
   const [newName, setNewName] = useState(name);
   const [newEmail, setNewEmail] = useState(email);
   const [newLocation, setNewLocation] = useState(location);
   const [newStatus, setNewStatus] = useState(status);
-  
-    console.log("Name", newName);
-    console.log("Email", newEmail);
-    console.log("Location", newLocation);
-    console.log("Status", newStatus);
 
-  const hanleSubmit = async(e) => {
+  console.log("Name", newName);
+  console.log("Email", newEmail);
+  console.log("Location", newLocation);
+  console.log("Status", newStatus);
+
+  const hanleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const res = await fetch(`http://localhost:3000/api/visitors/${id}`, {
         method: "PUT",
         headers: {
-          "Content-Type":"application/json",
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({newName, newEmail, newLocation, newStatus}),
+        body: JSON.stringify({ newName, newEmail, newLocation, newStatus }),
       });
-      
-      if(res.ok) {
+
+      if (res.ok) {
         setShowModal(!showModal);
         router.push("/dashboard/users");
         router.refresh();
       }
 
       console.log(res);
-
     } catch (error) {
       console.log("Error", error);
     }
-
-  }
-
+  };
 
   return (
     <>
@@ -60,7 +57,10 @@ function EditTopic({ id, name, email, location, status }) {
               size={35}
               className="p-2 bg-red-500 rounded-lg cursor-pointer"
             />
-            <form onSubmit={hanleSubmit} className="flex flex-col  p-5 rounded-lg">
+            <form
+              onSubmit={hanleSubmit}
+              className="flex flex-col  p-5 rounded-lg"
+            >
               <label className="mt-3">Name</label>
               <input
                 type="text"
@@ -86,14 +86,25 @@ function EditTopic({ id, name, email, location, status }) {
                 className="focus:outline-none px-2 py-1 rounded-lg text-black"
               />
               <label className="mt-3">Status</label>
-              <input
+              <select
+                value={newStatus}
+                onChange={(e) => setNewStatus(e.target.value)}
+                className="focus:outline-none px-2 py-1 rounded-lg text-black"
+              >
+                <option value="not-Selected">--Select--</option>
+                <option value="Active">Active</option>
+                <option value="Not Active">Not Active</option>
+              </select>
+              {/* <input
                 type="text"
                 placeholder="Active/Not Active"
                 value={newStatus}
                 onChange={(e) => setNewStatus(e.target.value)}
                 className="focus:outline-none px-2 py-1 rounded-lg text-black"
-              />
-              <button type="submit" className="my-3 p-2 bg-red-500 rounded-lg">Update</button>
+              /> */}
+              <button type="submit" className="my-3 p-2 bg-red-500 rounded-lg">
+                Update
+              </button>
             </form>
           </div>
         </div>

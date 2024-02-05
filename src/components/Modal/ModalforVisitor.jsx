@@ -6,7 +6,8 @@ import { ImCross } from "react-icons/im";
 import { useRouter } from "next/navigation";
 
 function ModalforVisitor() {
-  const { showModal, setShowModal, handleCrossonVisitor } = useContext(GlobalContext);
+  const { showModal, setShowModal, handleCrossonVisitor } =
+    useContext(GlobalContext);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -22,7 +23,7 @@ function ModalforVisitor() {
   const hanleSubmit = async (e) => {
     e.preventDefault();
 
-    if(!name || !email || !location || !status) {
+    if (!name || !email || !location || !status) {
       alert("Every field is necessary!!!");
       return;
     }
@@ -36,7 +37,7 @@ function ModalforVisitor() {
         body: JSON.stringify({ name, email, location, status }),
       });
 
-      if(res.ok) {
+      if (res.ok) {
         setShowModal(!showModal);
         router.push("/dashboard/users");
         router.refresh();
@@ -88,13 +89,23 @@ function ModalforVisitor() {
                   className="focus:outline-none px-2 py-1 rounded-lg text-black"
                 />
                 <label className="mt-3">Status</label>
-                <input
+                <select
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                  className="focus:outline-none px-2 py-1 rounded-lg text-black"
+                >
+                  <option value="not-Selected">--Select--</option>
+                  <option value="Active">Active</option>
+                  <option value="Not Active">Not Active</option>
+                </select>
+
+                {/* <input
                   type="text"
                   value={status}
                   placeholder="Active/Not Active"
                   onChange={(e) => setStatus(e.target.value)}
                   className="focus:outline-none px-2 py-1 rounded-lg text-black"
-                />
+                /> */}
                 <button
                   type="submit"
                   className="my-3 p-2 bg-red-500 rounded-lg"

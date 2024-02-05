@@ -69,13 +69,32 @@ function EditProduct({ id, deviceName, month, price, sales }) {
                 className="focus:outline-none px-2 py-1 rounded-lg text-black"
               />
               <label className="mt-3">Month</label>
-              <input
+              <select
+                  value={newMonth}
+                  onChange={(e) => setNewMonth(e.target.value)}
+                  className="focus:outline-none px-2 py-1 rounded-lg text-black"
+                >
+                  <option value="not-Selected">--Select--</option>
+                  <option value="January">January</option>
+                  <option value="February">February</option>
+                  <option value="March">March</option>
+                  <option value="April">April</option>
+                  <option value="May">May</option>
+                  <option value="June">June</option>
+                  <option value="July">July</option>
+                  <option value="August">August</option>
+                  <option value="September">September</option>
+                  <option value="October">October</option>
+                  <option value="November">November</option>
+                  <option value="December">December</option>
+                </select>
+              {/* <input
                 type="text"
                 value={newMonth}
                 placeholder="Enter Month"
                 onChange={(e) => setNewMonth(e.target.value)}
                 className="focus:outline-none px-2 py-1 rounded-lg text-black"
-              />
+              /> */}
               <label className="mt-3">Price</label>
               <input
                 type="number"
