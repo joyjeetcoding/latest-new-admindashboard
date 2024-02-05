@@ -80,18 +80,18 @@ function ModalforProducts() {
                   className="focus:outline-none px-2 py-1 rounded-lg text-black"
                 >
                   <option value="not-Selected">--Select--</option>
-                  <option value="January">January</option>
-                  <option value="February">February</option>
-                  <option value="March">March</option>
-                  <option value="April">April</option>
-                  <option value="May">May</option>
-                  <option value="June">June</option>
-                  <option value="July">July</option>
-                  <option value="August">August</option>
-                  <option value="September">September</option>
-                  <option value="October">October</option>
-                  <option value="November">November</option>
-                  <option value="December">December</option>
+                  <option id="jan" value="January">January</option>
+                  <option id="feb" value="February">February</option>
+                  <option id="mar" value="March">March</option>
+                  <option id="apr" value="April">April</option>
+                  <option id="may" value="May">May</option>
+                  <option id="jun" value="June">June</option>
+                  <option id="jul" value="July">July</option>
+                  <option id="aug" value="August">August</option>
+                  <option id="sep" value="September">September</option>
+                  <option id="oct" value="October">October</option>
+                  <option id="nov" value="November">November</option>
+                  <option id="dec" value="December">December</option>
                 </select>
                 {/* <input
                   type="text"

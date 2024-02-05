@@ -93,7 +93,7 @@ function EditTopic({ id, name, email, location, status }) {
               >
                 <option value="not-Selected">--Select--</option>
                 <option value="Active">Active</option>
-                <option value="Not Active">Not Active</option>
+                <option value="Inactive">Inactive</option>
               </select>
               {/* <input
                 type="text"
