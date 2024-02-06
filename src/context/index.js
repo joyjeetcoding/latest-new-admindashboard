@@ -29,13 +29,13 @@ export default function GlobalState({ children }) {
   }
 
   function handleCrossonProduct (){
-    setShowModal(!showModal);
+    setShowModal(false);
     router.push("/dashboard/products")
     router.refresh();
   }
 
   function handleCrossonVisitor (){
-    setShowModal(!showModal);
+    setShowModal(false);
     router.push("/dashboard/users")
     router.refresh();
   }

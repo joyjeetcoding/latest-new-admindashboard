@@ -22,11 +22,10 @@ async function ProductsPage({ searchParams }) {
   const allProducts = await fetchAllProducts();
 
   return (
-    <div className="relative">
-      <div className="font-fontInput flex flex-col justify-between px-10 ">
-        <div className="w-full relative">
+    <div className="">
+      <div className="font-fontInput flex flex-col justify-between px-10 py-5 mt-2">
+        <div className="w-full ">
           {/* Search bar */}
-          <SearchforProducts placeholder={"Search Products"} />
           <AddNewBtnProducts />
         </div>
         <div>

@@ -22,6 +22,9 @@ function EditProduct({ id, deviceName, month, price, sales }) {
   console.log("Price", newPrice);
   console.log("Sales", newSales);
 
+  
+
+
   const hanleSubmit = async (e) => {
     e.preventDefault();
 
@@ -49,6 +52,7 @@ function EditProduct({ id, deviceName, month, price, sales }) {
   return (
     <>
       <div>
+        <div className="bg-black fixed z-40 opacity-25 inset-0"></div>
         <div className="font-fontInput ">
           <div className="absolute bg-green-700 rounded-2xl left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2  text-white w-1/2 max-w-md z-[40]">
             <ImCross
@@ -62,19 +66,18 @@ function EditProduct({ id, deviceName, month, price, sales }) {
             >
               <label className="mt-3">Device Name</label>
               <select
-                  value={newdeviceName}
-                  onChange={(e) => setNewdeviceName(e.target.value)}
-                  className="focus:outline-none px-2 py-1 rounded-lg text-black"
-                >
-                  <option value="not-Selected">--Select--</option>
-                  <option value="Nokia">Nokia</option>
-                  <option value="Samsung">Samsung</option>
-                  <option value="Apple">Apple</option>
-                  <option value="Vivo">Vivo</option>
-                  <option value="Oppo">Oppo</option>
-                  <option value="One Plus">One Plus</option>
-                  
-                </select>
+                value={newdeviceName}
+                onChange={(e) => setNewdeviceName(e.target.value)}
+                className="focus:outline-none px-2 py-1 rounded-lg text-black"
+              >
+                <option value="not-Selected">--Select--</option>
+                <option value="Nokia">Nokia</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Apple">Apple</option>
+                <option value="Vivo">Vivo</option>
+                <option value="Oppo">Oppo</option>
+                <option value="One Plus">One Plus</option>
+              </select>
               {/* <input
                 type="text"
                 value={newdeviceName}
@@ -84,24 +87,48 @@ function EditProduct({ id, deviceName, month, price, sales }) {
               /> */}
               <label className="mt-3">Month</label>
               <select
-                  value={newMonth}
-                  onChange={(e) => setNewMonth(e.target.value)}
-                  className="focus:outline-none px-2 py-1 rounded-lg text-black"
-                >
-                  <option value="not-Selected">--Select--</option>
-                  <option id="jan" value="January">January</option>
-                  <option id="feb" value="February">February</option>
-                  <option id="mar" value="March">March</option>
-                  <option id="apr" value="April">April</option>
-                  <option id="may" value="May">May</option>
-                  <option id="jun" value="June">June</option>
-                  <option id="jul" value="July">July</option>
-                  <option id="aug" value="August">August</option>
-                  <option id="sep" value="September">September</option>
-                  <option id="oct" value="October">October</option>
-                  <option id="nov" value="November">November</option>
-                  <option id="dec" value="December">December</option>
-                </select>
+                value={newMonth}
+                onChange={(e) => setNewMonth(e.target.value)}
+                className="focus:outline-none px-2 py-1 rounded-lg text-black"
+              >
+                <option value="not-Selected">--Select--</option>
+                <option id="jan" value="January">
+                  January
+                </option>
+                <option id="feb" value="February">
+                  February
+                </option>
+                <option id="mar" value="March">
+                  March
+                </option>
+                <option id="apr" value="April">
+                  April
+                </option>
+                <option id="may" value="May">
+                  May
+                </option>
+                <option id="jun" value="June">
+                  June
+                </option>
+                <option id="jul" value="July">
+                  July
+                </option>
+                <option id="aug" value="August">
+                  August
+                </option>
+                <option id="sep" value="September">
+                  September
+                </option>
+                <option id="oct" value="October">
+                  October
+                </option>
+                <option id="nov" value="November">
+                  November
+                </option>
+                <option id="dec" value="December">
+                  December
+                </option>
+              </select>
               {/* <input
                 type="text"
                 value={newMonth}
