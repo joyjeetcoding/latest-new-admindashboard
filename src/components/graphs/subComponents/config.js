@@ -1,10 +1,10 @@
 export const yearlyAnalyticsChartOptions = {
     legend: {
-      show: false,
-      position: "top",
-      horizontalAlign: "left",
+      show: true,
+      position: "bottom",
+      horizontalAlign: "center",
     },
-    colors: ["#3C50E0", "#80CAEE"],
+    colors: ["rgb(21,128,61)", "rgb(249,115,22)", "rgb(59,130,246)"],
     chart: {
       fontFamily: "Satoshi, sans-serif",
       height: 335,
