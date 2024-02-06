@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import FormInput from "./FormIput";
+import { signIn, useSession } from "next-auth/react";
 
 const initialData = {
   email: "",
@@ -12,50 +13,73 @@ const initialData = {
 function Login() {
   const [values, setValues] = useState(initialData);
   const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
   const router = useRouter();
 
+  const {status} = useSession();
+  console.log(status);
   
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    try {
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      })
+
+      if(res.error) {
+        setError("Invalid Credentials");
+        return;
+      }
+
+      router.replace("dashboard");
+
+    } catch (error) {
+      console.log(error);
+    }
   
   };
 
-  const inputs = [
-    {
-      id: 1,
-      name: "email",
-      type: "text",
-      placeholder: "Enter the Email",
-      required: true,
-    },
-    {
-      id: 2,
-      name: "password",
-      type: "password",
-      placeholder: "Enter the Password",
-      required: true,
-    },
-  ];
-  const onChange = (e) => {
-    setValues({
-      ...values,
-      [e.target.name]: e.target.value,
-    });
-  };
+  // const inputs = [
+  //   {
+  //     id: 1,
+  //     name: "email",
+  //     type: "text",
+  //     placeholder: "Enter the Email",
+  //     required: true,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "password",
+  //     type: "password",
+  //     placeholder: "Enter the Password",
+  //     required: true,
+  //   },
+  // ];
+  // const onChange = (e) => {
+  //   setValues({
+  //     ...values,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
   
   function isFormValid() {
-    return values &&
-      values.email &&
-      values.email.trim() !== "" &&
-      values.password &&
-      values.password.trim() !== ""
+    return email &&
+      email.trim() !== "" &&
+      password &&
+      password.trim() !== ""
       ? true
       : false;
   }
 
-  console.log(values);
+  console.log("Email", email);
+  console.log("Password", password);
 
+  
 
   const redirectToRegister = () => {
     router.push("/register");
@@ -71,14 +95,16 @@ function Login() {
         </div>
         <div>
           <form onSubmit={handleSubmit} className="w-full flex flex-col">
-          {inputs.map((item) => (
+            <input value={email} className="w-full p-2 outline-none border-b border-green-500 font-fontInput" type="email" placeholder="Enter the email" onChange={(e) => setEmail(e.target.value)} />
+            <input value={password} className="w-full p-2 outline-none border-b border-green-500 font-fontInput" type="password" placeholder="Enter the Password" onChange={(e) => setPassword(e.target.value)} />
+          {/* {inputs.map((item) => (
               <FormInput
                 key={item.id}
                 {...item}
                 value={values[item.name]}
                 onChange={onChange}
               />
-            ))}
+            ))} */}
             <button className="disabled:bg-gray-500 p-3 mt-4 rounded-md bg-green-500 text-white font-semibold font-fontInput" disabled={!isFormValid()}>
               Login
             </button>
