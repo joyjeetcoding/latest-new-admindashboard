@@ -61,13 +61,27 @@ function EditProduct({ id, deviceName, month, price, sales }) {
               className="flex flex-col  p-5 rounded-lg"
             >
               <label className="mt-3">Device Name</label>
-              <input
+              <select
+                  value={newdeviceName}
+                  onChange={(e) => setNewdeviceName(e.target.value)}
+                  className="focus:outline-none px-2 py-1 rounded-lg text-black"
+                >
+                  <option value="not-Selected">--Select--</option>
+                  <option value="Nokia">Nokia</option>
+                  <option value="Samsung">Samsung</option>
+                  <option value="Apple">Apple</option>
+                  <option value="Vivo">Vivo</option>
+                  <option value="Oppo">Oppo</option>
+                  <option value="One Plus">One Plus</option>
+                  
+                </select>
+              {/* <input
                 type="text"
                 value={newdeviceName}
                 placeholder="Enter Device's Name"
                 onChange={(e) => setNewdeviceName(e.target.value)}
                 className="focus:outline-none px-2 py-1 rounded-lg text-black"
-              />
+              /> */}
               <label className="mt-3">Month</label>
               <select
                   value={newMonth}

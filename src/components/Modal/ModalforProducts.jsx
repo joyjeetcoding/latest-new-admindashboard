@@ -65,14 +65,28 @@ function ModalforProducts() {
                 onSubmit={hanleSubmit}
                 className="flex flex-col  p-5 rounded-lg"
               >
-                <label className="mt-3">Device Name</label>
-                <input
+                <label className="mt-3">Product</label>
+                <select
+                  value={deviceName}
+                  onChange={(e) => setDeviceName(e.target.value)}
+                  className="focus:outline-none px-2 py-1 rounded-lg text-black"
+                >
+                  <option value="not-Selected">--Select--</option>
+                  <option value="Nokia">Nokia</option>
+                  <option value="Samsung">Samsung</option>
+                  <option value="Apple">Apple</option>
+                  <option value="Vivo">Vivo</option>
+                  <option value="Oppo">Oppo</option>
+                  <option value="One Plus">One Plus</option>
+                  
+                </select>
+                {/* <input
                   type="text"
                   value={deviceName}
                   placeholder="Enter Device's Name"
                   onChange={(e) => setDeviceName(e.target.value)}
                   className="focus:outline-none px-2 py-1 rounded-lg text-black"
-                />
+                /> */}
                 <label className="mt-3">Month</label>
                 <select
                   value={month}

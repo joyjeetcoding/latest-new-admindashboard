@@ -55,7 +55,7 @@ function YearlyAnalytics({ allProducts }) {
   ];
 
   return (
-    <div>
+    <div className="p-4">
       <div>
         <p className="text-orange-500 font-semibold">Yearly Analytics Overview</p>
       </div>
