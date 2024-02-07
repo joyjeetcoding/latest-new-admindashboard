@@ -11,7 +11,6 @@ import { useContext, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { GlobalContext } from "@/context";
 import Link from "next/link";
-import { signOut, useSession } from "next-auth/react";
 
 const menuItems = [
   {
@@ -35,7 +34,6 @@ const menuItems = [
 ];
 
 function Sidebar() {
-  const {data: session} = useSession();
 
   const router = useRouter();
   const { sidebar, setSidebar, handleNav } = useContext(GlobalContext);
@@ -57,7 +55,7 @@ function Sidebar() {
       }
       <div className="flex justify-center items-center">
         <Link href={"/dashboard"} className="underline font-logo font-extrabold text-center text-lg sm:text-xl md:text-2xl lg:text-4xl p-5 py-7 mt-8">
-          WelCome {session?.user?.name}
+          WelCome Chief
         </Link>
       </div>
       <div className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2  flex justify-center items-center flex-col font-fontInput">
@@ -82,7 +80,7 @@ function Sidebar() {
         </nav>
         <div className="flex gap-2 mt-4 w-full text-sm sm:text-lg md:text-2xl p-3 px-4 hover:bg-green-700 rounded-md hover:text-white duration-500 ease-in-out">
           <MdLogout size={25} />
-          <button onClick={() => signOut()} className="">Log Out</button>
+          <button className="">Log Out</button>
         </div>
       </div>
     </div>

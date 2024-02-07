@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import FormInput from "./FormIput";
-import { signIn, useSession } from "next-auth/react";
+// import { signIn } from "@/auth";
 
 const initialData = {
   email: "",
@@ -18,29 +18,17 @@ function Login() {
   
   const router = useRouter();
 
-  const {status} = useSession();
-  console.log(status);
   
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const res = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
-      })
+    // try {
+    //   await signIn("credentials", { email, password })
 
-      if(res.error) {
-        setError("Invalid Credentials");
-        return;
-      }
 
-      router.replace("dashboard");
-
-    } catch (error) {
-      console.log(error);
-    }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   
   };
 
@@ -95,8 +83,8 @@ function Login() {
         </div>
         <div>
           <form onSubmit={handleSubmit} className="w-full flex flex-col">
-            <input value={email} className="w-full p-2 outline-none border-b border-green-500 font-fontInput" type="email" placeholder="Enter the email" onChange={(e) => setEmail(e.target.value)} />
-            <input value={password} className="w-full p-2 outline-none border-b border-green-500 font-fontInput" type="password" placeholder="Enter the Password" onChange={(e) => setPassword(e.target.value)} />
+            <input name="email" value={email} className="w-full p-2 outline-none border-b border-green-500 font-fontInput" type="email" placeholder="Enter the email" onChange={(e) => setEmail(e.target.value)} />
+            <input name="password" value={password} className="w-full p-2 outline-none border-b border-green-500 font-fontInput" type="password" placeholder="Enter the Password" onChange={(e) => setPassword(e.target.value)} />
           {/* {inputs.map((item) => (
               <FormInput
                 key={item.id}
