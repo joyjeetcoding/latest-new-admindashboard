@@ -17,7 +17,7 @@ function LoginwithGoogle() {
 
   return (
     <div className="relative bg-blue-950 h-screen w-full font-heading">
-      <p className="text-white flex justify-center items-center -translate-y-1/2 -translate-x-1/2 left-1/2 top-[35%] absolute text-center lg:text-2xl">If you have logged in before, then please refresh this page and login. After clicking,  please wait for few seconds.</p>
+      <p className="text-white flex justify-center items-center -translate-y-1/2 -translate-x-1/2 left-1/2 top-[35%] absolute text-center lg:text-2xl">Login to Continue</p>
       <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 flex justify-center items-center p-4 bg-white  rounded-lg">
         <svg
           xmlns="http://www.w3.org/2000/svg"
