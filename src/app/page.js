@@ -1,4 +1,4 @@
-import Login from '@/components/Login'
+import LoginwithGoogle from '@/components/LoginwithGoogle'
 
 
 
@@ -6,7 +6,8 @@ export default async function Home() {
 
   return (
     <main>
-      <Login />
+      <LoginwithGoogle />
+      {/* <Login /> */}
     </main>
   )
 }
