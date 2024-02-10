@@ -17,7 +17,7 @@ function LoginwithGoogle() {
 
   return (
     <div className="relative bg-blue-950 h-screen w-full font-heading">
-      <p className="text-white flex justify-center items-center -translate-y-1/2 -translate-x-1/2 left-1/2 top-[35%] absolute text-center lg:text-2xl">You are not Authenticated. Please Login to Continue</p>
+      <p className="text-white flex justify-center items-center -translate-y-1/2 -translate-x-1/2 left-1/2 top-[35%] absolute text-center lg:text-2xl">If you have logged in before, then please refresh this page and login. After clicking,  please wait for few seconds.</p>
       <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 flex justify-center items-center p-4 bg-white  rounded-lg">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ function LoginwithGoogle() {
             d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
           />
         </svg>
-        <button onClick={() => {status === "authenticated" ? signOut() : signIn('google')}}>Login with Google</button>
+        <button onClick={() => signIn('google')}>Login with Google</button>
       </div>
     </div>
   );

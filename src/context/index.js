@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import { createContext, useEffect, useState } from "react";
-import { PulseLoader } from "react-spinners";
+import { HashLoader } from "react-spinners";
 
 export const GlobalContext = createContext(null);
 
@@ -37,10 +37,10 @@ export default function GlobalState({ children }) {
   if(loader) {
     return (
       <div className="w-full h-screen flex justify-center items-center absolute">
-        <PulseLoader
-        color="black"
+        <HashLoader
+        color="#36d7b7"
         loading={loader}
-        size={35}
+        size={45}
         data-textid="Loader"
         />
       </div>
