@@ -49,8 +49,9 @@ function Sidebar() {
   console.log(status);
 
   useEffect(() => {
-    if(status === "unauthenticated")
+    if(status === "unauthenticated") {
       router.push("/");
+    }
   },[status])
 
   const hanldeNavigate = (menuItem) => {
@@ -66,8 +67,8 @@ function Sidebar() {
         <IoMdClose onClick={handleNav} size={40} className="text-white cursor-pointer lg:hidden" />
       }
       <div className="flex justify-center items-center">
-        <Link href={"/dashboard"} className="underline font-logo font-extrabold text-center text-lg sm:text-xl md:text-2xl lg:text-4xl p-5 py-7 mt-8">
-          WelCome {session?.user?.name}
+        <Link href={"/dashboard"} className="font-logo text-white text-center text-lg sm:text-xl md:text-2xl lg:text-4xl p-5 py-7 mt-8">
+          WelCome <span className="font-cormorant underline font-bold italic">{session?.user?.name}</span>
         </Link>
       </div>
       <div className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2  flex justify-center items-center flex-col font-fontInput">

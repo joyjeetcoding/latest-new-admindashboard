@@ -16,7 +16,9 @@ module.exports = {
     fontFamily:{
       heading: 'Montserrat',
       fontInput: 'Salsa',
-      logo: 'Rock Salt'
+      logo: 'Rock Salt',
+      bree: 'Bree Serif',
+      cormorant: 'Cormorant'
     }
   },
   plugins: [],

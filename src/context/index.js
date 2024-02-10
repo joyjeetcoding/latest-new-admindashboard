@@ -1,7 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { usePathname, useRouter } from "next/navigation";
 import { createContext, useEffect, useState } from "react";
+import { PulseLoader } from "react-spinners";
 
 export const GlobalContext = createContext(null);
 
@@ -9,6 +11,7 @@ export default function GlobalState({ children }) {
   const [sidebar, setSidebar] = useState(true);
   const [pageLevelLoader, setPageLoader] = useState(false);
   const [componentLevelLoader, setComponentLevelLoader] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
 
@@ -16,6 +19,34 @@ export default function GlobalState({ children }) {
     setSidebar(!sidebar);
   };
   
+  const {status} = useSession();
+  const pathName = usePathname();
+
+  useEffect(() => {
+    
+    
+    if(status === "loading") {
+      setLoader(true);
+    }
+    if(status === "unauthenticated")
+      setLoader(false);
+    if(status === "authenticated")
+    setLoader(false);
+  }, [status])
+
+  if(loader) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center absolute">
+        <PulseLoader
+        color="black"
+        loading={loader}
+        size={35}
+        data-textid="Loader"
+        />
+      </div>
+    )
+  }
+
   const handleNewVisitor = (e) => {
     e.preventDefault();
     setShowModal(!showModal);
