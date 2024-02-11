@@ -11,7 +11,7 @@ function RemoveBtnforProducts({id}) {
         const confirmed = confirm("Are you sure to delete this product ?");
 
         if(confirmed) {
-            const res = await fetch(`http://localhost:3000/api/products/deleteproduct?id=${id}`, {
+            const res = await fetch(`https://admindox.vercel.app/api/products/deleteproduct?id=${id}`, {
                 method: "DELETE",
             })
 
