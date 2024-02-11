@@ -3,7 +3,7 @@ import React from 'react'
 
 async function getProductById(id) {
   try {
-    const res = await fetch(`https://adminox.vercel.app/api/products/${id}`, {
+    const res = await fetch(`https://admindocx.vercel.app/api/products/${id}`, {
       method: "GET",
       cache: "no-store",
     })

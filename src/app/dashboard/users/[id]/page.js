@@ -2,7 +2,7 @@ import EditTopic from "@/components/EditTopic";
 
 async function getVisitorById(id) {
   try {
-    const res = await fetch(`https://adminox.vercel.app/api/visitors/${id}`, {
+    const res = await fetch(`https://admindocx.vercel.app/api/visitors/${id}`, {
       method: "GET",
       cache: "no-store",
     });
