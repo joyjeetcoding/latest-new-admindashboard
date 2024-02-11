@@ -29,7 +29,7 @@ function EditProduct({ id, deviceName, month, price, sales }) {
     e.preventDefault();
 
     try {
-      const res = await fetch(`https://admindox.vercel.app/api/products/${id}`, {
+      const res = await fetch(`https://admin-dox.vercel.app/api/products/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

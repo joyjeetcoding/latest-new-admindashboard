@@ -11,7 +11,7 @@ function RemoveBtnforVisitor({ id }) {
 
     if (confirmed) {
       const res = await fetch(
-        `https://admindox.vercel.app/api/visitors/deletevisitor?id=${id}`,
+        `https://admin-dox.vercel.app/api/visitors/deletevisitor?id=${id}`,
         {
           method: "DELETE",
         }
