@@ -168,7 +168,7 @@ export const deviceAnalyticsChartOptions = {
     type: "donut",
   },
   colors: ["#10B981", "#375E83", "#259AE6", "#FFA70B", "rgb(249,115,22)", "rgb(59,130,246)"],
-  labels: ["Samsung", "Apple", "Nokia", "Oppo", "One Plus", "Vivo"],
+  labels: ["Nokia", "Samsung", "Apple", "Oppo", "One Plus", "Vivo"],
   legend: {
     show: true,
     position: "bottom",

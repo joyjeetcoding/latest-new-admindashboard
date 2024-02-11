@@ -18,8 +18,8 @@ function getDevices(data, getProduct) {
 
 function DeviceAnalytics({ allProducts }) {
   const series = [
-    getDevices(allProducts, "Samsung"),
     getDevices(allProducts, "Nokia"),
+    getDevices(allProducts, "Samsung"),
     getDevices(allProducts, "Apple"),
     getDevices(allProducts, "Vivo"),
     getDevices(allProducts, "Oppo"),
