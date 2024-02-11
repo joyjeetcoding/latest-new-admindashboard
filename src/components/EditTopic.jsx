@@ -26,7 +26,7 @@ function EditTopic({ id, name, email, location, status }) {
     e.preventDefault();
 
     try {
-      const res = await fetch(`https://admin-dox.vercel.app/api/visitors/${id}`, {
+      const res = await fetch(`https://admindocx.vercel.app/api/visitors/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
