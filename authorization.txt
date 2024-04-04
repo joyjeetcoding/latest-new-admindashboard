@@ -1,0 +1,4 @@
+1. Install next auth
+2. created authconfig.js or api/auth/[...nextauth]/route.js
+3. inside that create signIn and authorized(in the callback part)
+4. create auth.js and write the providers and related authentication logic
